@@ -1,31 +1,23 @@
-/* eslint-disable no-undef */
-import logo from "./logo.svg";
-import "./App.css";
+import { useState } from "react";
 
-function App() {
-  console.log(versions.node());
+export function App() {
+  const [counter, setCounter] = useState(0);
+
+  Main.on("increase-counter", (newCounter) => {
+    setCounter(newCounter);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          This app is using Chrome (v{versions.chrome()}), Node.js (v
-          {versions.node()}), Electron (v{versions.electron()})`
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app">
+        <button onClick={() => Main.openNewWindow(counter)}>
+          Open New Window
+        </button>
+        <button onClick={() => Main.increaseCounter(counter + 1)}>
+          Increase Counter
+        </button>
+        <div className="counter">counter: {counter}</div>
+      </div>
+    </>
   );
 }
-
-export default App;
