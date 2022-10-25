@@ -1,12 +1,12 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 export const api = {
-  increaseCounter: (newCounter) => {
-    ipcRenderer.send("increaseCounter", newCounter);
+  openNewNoteWindow: (note) => {
+    ipcRenderer.send("openNewNoteWindow", note);
   },
 
-  openNewWindow: (counter) => {
-    ipcRenderer.send("openNewWindow", counter);
+  onNoteSave: (note) => {
+    ipcRenderer.send("onNoteSave", note);
   },
 
   on: (channel, callback) => {

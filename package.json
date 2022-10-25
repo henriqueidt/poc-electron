@@ -15,7 +15,9 @@
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hot-loader": "4.13.0"
+    "react-hot-loader": "4.13.0",
+    "uuid": "^9.0.0",
+    "zustand": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
@@ -31,6 +33,7 @@
     "@marshallofsound/webpack-asset-relocator-loader": "0.5.0",
     "babel-loader": "8.2.2",
     "cross-env": "7.0.3",
+    "css-loader": "^6.7.1",
     "electron": "13.1.2",
     "eslint": "7.29.0",
     "eslint-config-prettier": "8.3.0",
@@ -43,6 +46,7 @@
     "eslint-plugin-standard": "5.0.0",
     "file-loader": "^6.2.0",
     "prettier": "2.3.1",
+    "style-loader": "^3.3.1",
     "wait-on": "5.3.0"
   },
   "config": {
@@ -63,6 +67,14 @@
                   "html": "./public/index.html",
                   "js": "./src/index.js",
                   "name": "main_window",
+                  "preload": {
+                    "js": "./electron/preload.js"
+                  }
+                },
+                {
+                  "html": "./public/index2.html",
+                  "js": "./src/index.js",
+                  "name": "new_task_window",
                   "preload": {
                     "js": "./electron/preload.js"
                   }

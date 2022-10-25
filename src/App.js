@@ -1,23 +1,15 @@
-import { useState } from "react";
+import { MainWindow } from "./windows/mainWindow";
+import { NoteWindow } from "./windows/noteWindow";
+
+const isNewNote = () => {
+  const newNoteIdentifier = document.getElementById("new-task");
+  return newNoteIdentifier !== null;
+};
 
 export function App() {
-  const [counter, setCounter] = useState(0);
+  if (!isNewNote()) {
+    return <MainWindow />;
+  }
 
-  Main.on("increase-counter", (newCounter) => {
-    setCounter(newCounter);
-  });
-
-  return (
-    <>
-      <div className="app">
-        <button onClick={() => Main.openNewWindow(counter)}>
-          Open New Window
-        </button>
-        <button onClick={() => Main.increaseCounter(counter + 1)}>
-          Increase Counter
-        </button>
-        <div className="counter">counter: {counter}</div>
-      </div>
-    </>
-  );
+  return <NoteWindow />;
 }
